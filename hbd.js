@@ -140,17 +140,11 @@ function bloomFlower() {
     const bloomSound = new Audio('sounds/pipe flower sound.mp3');
     
     pipe.style.pointerEvents = 'none'; 
+    flower.classList.remove('bloom');   
 
-     
-    flower.classList.remove('bloom');
-    
-                                 
     void flower.offsetWidth;
-    
-  
     flower.classList.add('bloom');
-    
-  
+
     bloomSound.play();
   }
 
@@ -161,8 +155,8 @@ function bloomFlower() {
 
   function mariojump() {
     const agent1 = document.querySelector('.mario');
-
     const mariosound = new Audio ('sounds/mario sound.mp3')
+
     mariosound.addEventListener ('canplaythrough',() => {
         mariosound.play()
         });
@@ -181,8 +175,8 @@ function bloomFlower() {
 
   function luigijump() {
     const luigi = document.querySelector('.luigi');
-
     const luigisound = new Audio ('sounds/luigi sound .mp3')
+
     luigisound.addEventListener ('canplaythrough',() => {
         luigisound.play()
         });
@@ -199,32 +193,38 @@ function bloomFlower() {
     }, 1500);
   }
 
-  
-// Variables to hold the sound files
-
-
-// Function to toggle the gift open/close state
-function toggleGift() {
+function OpenGift() {
     const openSound = new Audio('sounds/Gift Opening sound.mp3');
-    const closeSound = new Audio('sounds/gift closing sound.mp3');
     const giftContainer = document.querySelector('.gift-container');
 
-    // Check if the gift is already open
     if (giftContainer.classList.contains('active')) {
-        // Closing the gift
-        
-        // Play the closing sound
-        closeSound.play();
+
+        openSound.pause();
     } else {
-        // Opening the gift
         giftContainer.classList.add('active');
         
-        // Play the opening sound
         openSound.play();
+
     }
-    // Add an event listener to trigger the toggle on click
-    document.querySelector('.click').addEventListener('click', toggleGift);
 }
 
 
- 
+function handleMysteryBoxClick() {
+    const star = document.querySelector('.star');
+    const starsound = new Audio('sounds/mario star sound.mp3')
+    const starShadow = document.querySelector('.starShadow')
+    starShadow.style.opacity = '1';
+
+    // Add jumpBounce class to the star
+    star.classList.add('jumpBounce');
+    starsound.play()
+
+    star.addEventListener('animationend', () => {
+       
+        starsound.pause()
+        star.classList.add('Starbounce');
+        starShadow.classList.add('BounceOut')
+    }, { once: true }); 
+}
+
+document.getElementById('mysteryBox').addEventListener('click', handleMysteryBoxClick);
