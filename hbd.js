@@ -236,10 +236,18 @@ document.getElementById('mysteryBox').addEventListener('click', handleMysteryBox
 
 
 function ShowCard() {
-    const star = document.getElementsByClassName('star');
+    const star = document.querySelector('.star');
     const card = document.querySelector('.card');
 
     const cardsound = Audio('sounds/Card appear sound.mp3');
+    cardsound.volume = 0.5;
+    cardsound.play();
 
+    star.addEventListener('animationed', () => {
+        card.classList.add('ShowCard');
+        star.style.opacity = 0;
+        card.style.opacity = 1;
+    }, {once : true});
 
 }
+document.getElementById('star').addEventListener('click', ShowCard);

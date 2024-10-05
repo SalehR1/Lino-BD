@@ -649,20 +649,35 @@ body {
 
 
 
-
 .card {
   width: 210px;
   height: 160px;
   position: absolute;
   margin: auto;
   left: 0;
-  right: 100px;
+  right: 350px;
   top: 0;
-  bottom: 100px;
+  bottom: 750px;
   -webkit-perspective: 1200px;
   perspective: 1200px;
   transition: 0.5s;
   opacity: 0;
+}
+
+.card.ShowCard{
+  animation: ShowCard 5s forwards ease-in-out;
+}
+
+@keyframes ShowCard {
+  0%{
+    transform: translateY(0px);
+  }
+  50%{
+    transform: translateY(750px);
+  }
+  100%{
+    transform: translateY(682px);
+  }
 }
 
 .card:hover {
@@ -671,6 +686,7 @@ body {
 .card:hover .outside {
   transform: rotateY(-130deg);
 }
+
 .outside,
 .inside {
   height: 100%;
@@ -678,6 +694,7 @@ body {
   position: absolute;
   left: 50%;
 }
+
 .inside {
   background: linear-gradient(to right, #E63946, #E63946 30%);
   line-height: 3;
