@@ -858,9 +858,9 @@ body {
 .outside p {
   font-size: 15px;
   text-transform: uppercase;
-  margin-top: 10px;
+  margin-top: 5px;
   text-align: center;
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
   color: #ffffff;
 }
 .inside h1 {
