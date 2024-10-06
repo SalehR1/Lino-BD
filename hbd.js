@@ -216,15 +216,16 @@ function OpenGift() {
     }
 }
 
-
 function handleMysteryBoxClick() {
     const star = document.querySelector('.star');
     const starsound = new Audio('sounds/mario star sound.mp3');
     const starShadow = document.querySelector('.starShadow');
+    const mystery = document.getElementById('mysteryBox');
     starShadow.style.opacity = '1';
 
     star.classList.add('jumpBounce');
     starsound.volume = 0.5;
+    mystery.style.pointerEvents = 'none';
     starsound.play()
 
     star.addEventListener('animationend', () => {
@@ -238,16 +239,40 @@ document.getElementById('mysteryBox').addEventListener('click', handleMysteryBox
 function ShowCard() {
     const star = document.querySelector('.star');
     const card = document.querySelector('.card');
+    const shadow = document.querySelector('.starShadow');
 
-    const cardsound = Audio('sounds/Card appear sound.mp3');
+    const cardsound = new Audio('sounds/Card appear sound.mp3');
     cardsound.volume = 0.5;
     cardsound.play();
+ 
+    card.style.opacity = 1;
+    card.classList.add('ShowCard');
 
-    star.addEventListener('animationed', () => {
-        card.classList.add('ShowCard');
-        star.style.opacity = 0;
-        card.style.opacity = 1;
-    }, {once : true});
-
+    star.style.pointerEvents = 'none';
+    star.style.opacity = 0;
+    
+    shadow.style.transitionDelay = '0s';
+    shadow.style.opacity = 0;
 }
-document.getElementById('star').addEventListener('click', ShowCard);
+document.querySelector('.star').addEventListener('click', ShowCard);
+
+
+
+
+musicPlaying = false;
+const music = new Audio('sounds/Background Music.mp3');
+music.volume = 0.5;
+function BackgroundMusic() {
+    const toggle = document.querySelector('button');
+
+    if (musicPlaying) {
+        music.pause();
+        musicPlaying = false;
+    }
+    else {
+        music.currentTime = 0;
+        music.play();
+        musicPlaying = true;
+    }
+}
+document.querySelector('button').addEventListener('click',BackgroundMusic);

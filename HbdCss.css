@@ -1,13 +1,86 @@
 body {
     display: flex;
+    background-image: url('Background/Sky\ Background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100hv;
     background-color: #87CEEB;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    width: 100%;
     margin: 0;
     align-items: flex-end;
     font-family: "Poppins", sans-serif;
+    overflow: hidden;
+}
+
+.button {
+  all: unset;
+  display: flex;
+  top: 10px;
+  left: 46%;
+  justify-content: center;
+  align-items: center;
+  column-gap: .5em;
+  position: relative;
+  border-radius: 50px;
+  padding: 16px 24px;
+  background-color: #E63946;
+  box-shadow: 
+    inset 0 -4px 8px #87bfd8,
+    0 4px 6px rgba(#000, .2);
+  cursor: pointer;
+  color: black;
+  transition: transform .4s cubic-bezier(.55, 1, .15, 1);
+  will-change: transform;
+  z-index: 10;
+  font-weight: bold;
+  
+  &:active {
+    transform: scale(.92);
+    
+    &::after {
+      opacity: 1;
+    }
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-image-source: url('https://assets.codepen.io/4175254/mario-button-borders.png');
+    border-image-slice: 50%;
+    border-image-width: 40px;
+    border-style: solid;
+    transform: scale(1.04, 1.08);
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: .4s;
+    transition-timing-function: cubic-bezier(.55, 1, .15, 1);
+    will-change: transform;
+  }
+  
+  &:focus-visible::after {
+    opacity: 1;
+    animation: pulsate 1s infinite;
+  }
+}
+.button-image {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1.04, 1.08);
+  }
+  50% {
+    transform: scale(1.08, 1.12);
+  }
+  100% {
+    transform: scale(1.04, 1.08);
+  }
 }
 
 .brickfloor {
@@ -72,6 +145,7 @@ body {
   bottom: 290px;
   left: 961px; 
   cursor: pointer;
+  transition: opacity 0.5s;
 }
 .star.jumpBounce {
   animation: jumpBounce 5.5s forwards ease;
@@ -91,8 +165,7 @@ body {
   border-radius: 50%;
   z-index: 10;
   opacity: 0;
-  transition: opacity 1.5s ease;
-  transition-delay: 6s;
+  transition: opacity 1.5s ease 4.7s;
   animation: BounceOut 3s infinite ease-in-out;
 }
 
@@ -140,8 +213,6 @@ body {
       transform: translateY(230px) translateX(-170px);
   }
 } 
-
-
 
 .pipe {
     width: 400px;
@@ -310,7 +381,7 @@ body {
     left: -200px;
     opacity: 0.7;
     animation: moveClouds 20s linear ease-in;
-    z-index: 2;
+    z-index: 1;
   }
 
   .Csmall {
@@ -416,9 +487,8 @@ body {
     50%{
       transform: translateY(-120px) scale(0.5);
     }
-
   }
- 
+
   .coin {
     width: 50px;
     bottom: 346px;
@@ -468,10 +538,10 @@ body {
     height: auto;
     width: 950px;
     position: absolute;
-    left: 500px;
+    left: 25%;
     top: -200px;
     opacity: 0.7;
-    z-index: 1;
+    z-index: 0;
   }
  
 .adjust {
@@ -645,10 +715,6 @@ body {
     transition-delay: .2s;
 }
 
-
-
-
-
 .card {
   width: 210px;
   height: 160px;
@@ -660,23 +726,20 @@ body {
   bottom: 750px;
   -webkit-perspective: 1200px;
   perspective: 1200px;
-  transition: 0.5s;
   opacity: 0;
+  transition: opacity 0.5s; 
 }
 
 .card.ShowCard{
-  animation: ShowCard 5s forwards ease-in-out;
+  animation: ShowCard 6s forwards ease-in-out;
 }
 
 @keyframes ShowCard {
   0%{
     transform: translateY(0px);
   }
-  50%{
-    transform: translateY(750px);
-  }
-  100%{
-    transform: translateY(682px);
+  50% , 100%{
+    transform: translateY(350px) translateX(100px);
   }
 }
 
@@ -797,7 +860,7 @@ body {
   text-transform: uppercase;
   margin-top: 10px;
   text-align: center;
-  letter-spacing: 5px;
+  letter-spacing: 2px;
   color: #ffffff;
 }
 .inside h1 {
@@ -808,7 +871,7 @@ body {
 }
 .inside p{
   margin-top: 2px;
-  font-size: 15px;
+  font-size: 14px;
   letter-spacing: 0px;
   text-align: center;
   line-height: 1.4;
