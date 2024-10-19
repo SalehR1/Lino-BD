@@ -1,6 +1,6 @@
 body {
     display: flex;
-    background-image: url('/Background/SkyBG.png');
+    background-image: url('Background/SkyBG.png');
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
