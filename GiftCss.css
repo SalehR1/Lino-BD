@@ -17,7 +17,7 @@ body {
 .button {
   all: unset;
   display: flex;
-  bottom: 92%;
+  bottom: 90%;
   left: 46%;
   justify-content: center;
   align-items: center;
