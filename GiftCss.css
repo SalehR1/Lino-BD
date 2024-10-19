@@ -1,6 +1,6 @@
 body {
     display: flex;
-    background-image: url('Background/Sky\ Background.png');
+    background-image: url('/Background/SkyBG.png');
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
@@ -878,4 +878,3 @@ body {
   color: whitesmoke;
   direction: ltr; 
 }
-
